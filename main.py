@@ -5,7 +5,6 @@ playerHand = []
 opponentHand = []
 cardPool = []
 
-
 def main():
     generate_deck()
     rounds = int(input("How many Rounds will you play? "))
@@ -37,6 +36,4 @@ def deal(num_rounds,player,opponent):
 def gamestart():
     print("Your cards are:\n")
 
-
 main()
-
