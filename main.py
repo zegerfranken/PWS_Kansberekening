@@ -1,7 +1,6 @@
 import random
 import math
 
-rounds = 3
 playerHand = []
 opponentHand = []
 cardPool = []
@@ -9,10 +8,9 @@ cardPool = []
 
 def main():
     generate_deck()
-    print(len(cardPool))
-    deal_rounds(rounds,playerHand,opponentHand)
-    print(playerHand)
-    print(opponentHand)
+    rounds = int(input("How many Rounds will you play? "))
+    deal(rounds,playerHand,opponentHand)
+    print("Your hand: " + str(playerHand))
 
 def generate_deck():
     card_suits = ["♤", "♡", "♢", "♧"]
@@ -26,9 +24,11 @@ def generate_deck():
 
 
 def dealcards(player,deck):
-    player.append(deck[random.randrange(0,len(deck)-1)])
+    selected_card = random.randrange(0,len(deck)-1)
+    player.append(deck[selected_card])
+    deck.pop(selected_card)
 
-def deal_rounds(num_rounds,player,opponent):
+def deal(num_rounds,player,opponent):
     while num_rounds != 0:
         dealcards(player,cardPool)
         dealcards(opponent,cardPool)
