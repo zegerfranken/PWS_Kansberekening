@@ -8,8 +8,12 @@ cardPool = []
 
 for x in cardSuits:
     for y in cardLevel:
-        cardPool.append(y + " of " + x)
-
+        if y != "10":
+            cardPool.append("[" + y + "  of " + x + "]") #fixes spacing due to number ten having two digits
+        else:
+            cardPool.append("[" + y + " of " + x + "]")
+for z in cardPool:
+    print(z)
 
 def dealcards():
     print()
