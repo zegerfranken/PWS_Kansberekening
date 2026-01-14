@@ -8,7 +8,7 @@ cardPool = []
 
 for x in cardSuits:
     for y in cardLevel:
-        print(y + " of " + x)
+        cardPool.append(y + " of " + x)
 
 
 def dealcards():
