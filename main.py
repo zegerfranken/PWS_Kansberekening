@@ -38,7 +38,7 @@ def print_cards(value):
     else: print("Your hand:       " + str(playerHand))
 
 def dealcards(player, deck):
-    if len(deck) != 0:
+    if len(deck) != 1:
         selected_card = random.randrange(0, len(deck) - 1)
         player.append(deck[selected_card])
         deck.pop(selected_card)
