@@ -11,16 +11,30 @@ cardPool = []
 def main():
     generate_deck(cardPool)
     rounds = int(input("How many Rounds will you play? "))
-    players = input("How many players will be playing?")
+    #players = input("How many players will be playing?")
 
 
     deal(rounds,activePlayers)
     for i in activePlayers:
         opponent_number = 1
-        if i == playerHand:
-            print("Your hand: " + str(activePlayers))
+        if activePlayers.index(i) == 0:
+            print("Your hand: " + str(i))
         else:
-            print("Opponent " + str(opponent_number) + " hand: " + str(activePlayers))
+            print("Opponent " + str(opponent_number) + " hand: " + str(i))
+            opponent_number += 1
+
+def dealcards(player, deck):
+    selected_card = random.randrange(0, len(deck) - 1)
+    player.append(deck[selected_card])
+    deck.pop(selected_card)
+
+
+def deal(num_rounds, players):
+    while num_rounds != 0:
+        for i in players:
+            dealcards(players[players.index(i)], cardPool)
+        num_rounds -= 1
+
 
 def generate_deck(deck):
     card_suits = ["♤", "♡", "♢", "♧"]
@@ -33,16 +47,6 @@ def generate_deck(deck):
                 deck.append("[" + y + "of " + x + "]")
 
 
-def dealcards(players,deck):
-    for i in players:
-        selected_card = random.randrange(0, len(deck) - 1)
-        players[players.index(i)].append(deck[selected_card])
-        deck.pop(selected_card)
-
-def deal(num_rounds,players):
-    while num_rounds != 0:
-        dealcards(players,cardPool)
-        num_rounds -= 1
 
 def gamestart():
     print("Your cards are:\n")
