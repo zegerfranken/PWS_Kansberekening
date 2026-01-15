@@ -12,26 +12,32 @@ cardPool = []
 def main():
     generate_deck(cardPool)
     rounds = int(input("How many Rounds will you play? "))
-    players = int(input("How many players will be playing? "))
-    if players == 3: activePlayers.append(opponent2Hand)
-    elif players == 4:
-        activePlayers.append(opponent2Hand)
-        activePlayers.append(opponent3Hand)
-    elif players == 2: pass
-    else: print("Invalid number, continuing with 2...")
-
-
+    numberOfPlayers = int(input("How many players will be playing? "))
+    add_players(numberOfPlayers)
     deal(rounds,activePlayers)
-    for i in activePlayers:
-        opponent_number = 1
-        if activePlayers.index(i) == 0:
-            print("Your hand:       " + str(i))
-        else:
-            print("Opponent " + str(opponent_number) + " hand: " + str(i))
-            opponent_number += 1
-    print(activePlayers)
+    print_cards(1)#1 or 0 in parameter decides whether to show opponent's hand
 
 #end of main
+
+def add_players(num):
+    if num == 3: activePlayers.append(opponent2Hand)
+    elif num == 4:
+        activePlayers.append(opponent2Hand)
+        activePlayers.append(opponent3Hand)
+    elif num == 2: pass
+    else: print("Invalid number, continuing with 2...")
+
+def print_cards(value):
+    if value == 1:
+        opponent_number = 1
+        for i in activePlayers:
+            if activePlayers.index(i) == 0:
+                print("Your hand:       " + str(i))
+            else:
+                print("Opponent " + str(opponent_number) + " hand: " + str(i))
+                opponent_number += 1
+    else: print("Your hand:       " + str(playerHand))
+
 def dealcards(player, deck):
     selected_card = random.randrange(0, len(deck) - 1)
     player.append(deck[selected_card])
