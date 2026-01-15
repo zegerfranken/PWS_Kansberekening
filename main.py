@@ -11,12 +11,14 @@ cardPool = []
 def main():
     generate_deck(cardPool)
     rounds = int(input("Rounds? "))
-    numberOfPlayers = int(input("Players? "))
-    add_players(numberOfPlayers)
+    add_players(int(input("Players? ")))
     deal(rounds,activePlayers)
-    print_cards(1)#1 or 0 in parameter decides whether to show opponent's hand
+    print_cards(1)# 1 in parameter to show opponents' hand
+
 
 #end of main
+
+
 
 def add_players(num):
     if num == 3: activePlayers.append(opponent2Hand)
@@ -31,11 +33,11 @@ def print_cards(value):
         opponent_number = 1
         for i in activePlayers:
             if activePlayers.index(i) == 0:
-                print("Your hand:       " + str(i))
+                print("Your hand:       " + str(i)[1:-1].replace("'",""))
             else:
-                print("Opponent " + str(opponent_number) + " hand: " + str(i))
+                print("Opponent " + str(opponent_number) + " hand: " + str(i)[1:-1].replace("'",""))
                 opponent_number += 1
-    else: print("Your hand:       " + str(playerHand))
+    else: print("Your hand:       " + str(playerHand)[1:-1].replace("'",""))
 
 def dealcards(player, deck):
     if len(deck) != 1:
