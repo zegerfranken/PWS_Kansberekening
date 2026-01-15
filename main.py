@@ -1,6 +1,5 @@
 import random
 import math
-from os import wait
 
 playerHand = []
 opponent1Hand = []
@@ -11,8 +10,8 @@ cardPool = []
 
 def main():
     generate_deck(cardPool)
-    rounds = int(input("How many Rounds will you play? "))
-    numberOfPlayers = int(input("How many players will be playing? "))
+    rounds = int(input("Rounds? "))
+    numberOfPlayers = int(input("Players? "))
     add_players(numberOfPlayers)
     deal(rounds,activePlayers)
     print_cards(1)#1 or 0 in parameter decides whether to show opponent's hand
@@ -25,7 +24,7 @@ def add_players(num):
         activePlayers.append(opponent2Hand)
         activePlayers.append(opponent3Hand)
     elif num == 2: pass
-    else: print("Invalid number, continuing with 2...")
+    else: print("Invalid number of players, continuing with 2...")
 
 def print_cards(value):
     if value == 1:
@@ -39,9 +38,10 @@ def print_cards(value):
     else: print("Your hand:       " + str(playerHand))
 
 def dealcards(player, deck):
-    selected_card = random.randrange(0, len(deck) - 1)
-    player.append(deck[selected_card])
-    deck.pop(selected_card)
+    if len(deck) != 0:
+        selected_card = random.randrange(0, len(deck) - 1)
+        player.append(deck[selected_card])
+        deck.pop(selected_card)
 
 
 def deal(num_rounds, players):
