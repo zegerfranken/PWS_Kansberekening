@@ -1,5 +1,4 @@
 import random
-import math
 
 playerHand = []
 opponent1Hand = []
@@ -7,16 +6,35 @@ opponent2Hand = []
 opponent3Hand = []
 activePlayers = [playerHand, opponent1Hand]
 cardPool = []
+turnCount = 0 #turn counter. 0 = player, 1 = opponent1 etc
 
 def main():
     generate_deck(cardPool)
     rounds = int(input("Rounds? "))
     add_players(int(input("Players? ")))
     deal(rounds,activePlayers)
-    print_cards(1)# 1 in parameter to show opponents' hand
+    print_cards(0)
+    round_start(rounds)
 
 
 #end of main
+
+def turn(actor):
+    return
+
+def computer_turn_dumb():
+    return
+
+
+def round_start(rounds):
+    topCard = []
+    dealcards(topCard, cardPool)
+    print("Trump card:      " + str(topCard)[2:-2])
+    bid = input("How many strikes will you win out of {}?\n".format(rounds))
+
+
+
+
 
 
 
@@ -44,7 +62,9 @@ def dealcards(player, deck):
         selected_card = random.randrange(0, len(deck) - 1)
         player.append(deck[selected_card])
         deck.pop(selected_card)
-
+    else:
+        player.append(deck[0])
+        deck.pop(0)
 
 def deal(num_rounds, players):
     while num_rounds != 0:
@@ -65,7 +85,6 @@ def generate_deck(deck):
 
 
 
-def gamestart():
-    print("Your cards are:\n")
+
 
 main()
