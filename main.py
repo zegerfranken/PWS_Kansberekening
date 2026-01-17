@@ -11,7 +11,6 @@ cardPool = []
 turnCount = 0 #turn counter. 0 = player, 1 = opponent1 etc
 
 def main():
-    print(find_level("[A of ♤]"))
     generate_deck(cardPool)
     rounds = int(input("Rounds? "))
     add_players(int(input("Players? ")))
@@ -30,11 +29,18 @@ def computer_turn_dumb():
     return
 
 
-def computer_bet_dumb(rounds,hand,trump_suit):
+def computer_bet_dumb(hand,trump_suit):
     bet = 0
+    estimate = float(0)
+    level_list = []
+    p = 2
+    while len(level_list) < 13:
+        level_list.append(p)
+        p += 1
+    print(level_list)
     for i in hand:
         if find_suit(i) == trump_suit:
-            return
+            find_level(i)
         else:
             return
 
@@ -47,7 +53,7 @@ def round_start(rounds):
     dealcards(topCard, cardPool)
     print("Trump card:      " + str(topCard))
     bid = input("How many strikes will you win out of {}?\n".format(rounds))
-    computer_bet_dumb(rounds,opponent1Hand,find_suit(topCard))
+    computer_bet_dumb(opponent1Hand,find_suit(topCard))
 
 def add_players(num):
     if num == 3: activePlayers.append(opponent2Hand)
@@ -87,13 +93,22 @@ def print_cards(value):
 
 
 def dealcards(player, deck):
-    if len(deck) != 1:
-        selected_card = random.randrange(0, len(deck) - 1)
-        player.append(deck[selected_card])
-        deck.pop(selected_card)
-    else:
-        player.append(deck[0])
-        deck.pop(0)
+    if isinstance(player, list):
+        if len(deck) != 1:
+            selected_card = random.randrange(0, len(deck) - 1)
+            player.append(deck[selected_card])
+            deck.pop(selected_card)
+        else:
+            player.append(deck[0])
+            deck.pop(0)
+    elif isinstance(player, str):
+        if len(deck) != 1:
+            selected_card = random.randrange(0, len(deck) - 1)
+            player = deck[selected_card]
+            deck.pop(selected_card)
+        else:
+            player = deck[0]
+            deck.pop(0)
 
 
 def deal(num_rounds, players):
