@@ -1,5 +1,6 @@
 import math
 import random
+import re
 
 playerHand = []
 opponent1Hand = []
@@ -10,6 +11,7 @@ cardPool = []
 turnCount = 0 #turn counter. 0 = player, 1 = opponent1 etc
 
 def main():
+    print(find_level("[A of ♤]"))
     generate_deck(cardPool)
     rounds = int(input("Rounds? "))
     add_players(int(input("Players? ")))
@@ -28,14 +30,15 @@ def computer_turn_dumb():
     return
 
 
-def computer_bet_dumb(rounds,hand,trumpsuit):
-    bet = math.floor(rounds/len(activePlayers)) # estimation of average chance of winning
-    highCards = []
+def computer_bet_dumb(rounds,hand,trump_suit):
+    bet = 0
     for i in hand:
-        if (i.find("J") or i.find("Q") or i.find("K") or i.find("A") != -1) and bet < math.ceil(rounds/2):
-            highCards.append(i)
-    avrgOppHighcards = (4/13)*rounds
-    bet += len(highCards)-1
+        if find_suit(i) == trump_suit:
+            return
+        else:
+            return
+
+
     return bet
 
 
@@ -62,6 +65,14 @@ def find_suit(card):
     elif card.find("♢") != -1: suit = "diamonds"
     elif card.find("♧") != -1: suit = "clubs"
     return suit
+
+
+def find_level(card):
+    level = re.sub(r"\D", "", card)    #regex from stack overflow
+    if level == "":
+        level = card[1].replace("J","11").replace("Q","12").replace("K","13").replace("A","14")
+    return int(level)
+
 
 def print_cards(value):
     if value == 1:
