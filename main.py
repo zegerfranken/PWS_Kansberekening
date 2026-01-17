@@ -31,16 +31,19 @@ def computer_turn_dumb():
 
 def computer_bet_dumb(hand,trump_suit):
     bet = 0
-    estimate = float(0)
+    estimate = {}
     level_list = []
     p = 2
     while len(level_list) < 13:
         level_list.append(p)
         p += 1
-    print(level_list)
-    for i in hand:
+
+    for i in hand: #rates the chance per card on being able to win a strike
+    estimate.
+        for p in level_list:
+            if
         if find_suit(i) == trump_suit:
-            find_level(i)
+
         else:
             return
 
@@ -50,7 +53,7 @@ def computer_bet_dumb(hand,trump_suit):
 
 def round_start(rounds):
     topCard = ""
-    dealcards(topCard, cardPool)
+    topCard = dealcards(topCard, cardPool)
     print("Trump card:      " + str(topCard))
     bid = input("How many strikes will you win out of {}?\n".format(rounds))
     computer_bet_dumb(opponent1Hand,find_suit(topCard))
@@ -106,9 +109,11 @@ def dealcards(player, deck):
             selected_card = random.randrange(0, len(deck) - 1)
             player = deck[selected_card]
             deck.pop(selected_card)
+            return player
         else:
             player = deck[0]
             deck.pop(0)
+            return player
 
 
 def deal(num_rounds, players):
