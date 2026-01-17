@@ -1,3 +1,4 @@
+import math
 import random
 
 playerHand = []
@@ -15,27 +16,33 @@ def main():
     deal(rounds,activePlayers)
     print_cards(0)
     round_start(rounds)
-
+    computer_bet_dumb_confident(rounds,opponent1Hand)
 
 #end of main
 
 def turn(actor):
     return
 
+
 def computer_turn_dumb():
     return
 
 
+def computer_bet_dumb_confident(rounds,hand,trump):
+    bet = math.floor(rounds/len(activePlayers))
+    highCards = []
+    for i in hand:
+        if (i.find("J") or i.find("Q") or i.find("K") or i.find("A") != -1) and bet < rounds/2:
+            highCards.append(i)
+    bet += math.ceil(len(highCards)/2)
+    return bet
+
+
 def round_start(rounds):
-    topCard = []
+    topCard = ""
     dealcards(topCard, cardPool)
-    print("Trump card:      " + str(topCard)[2:-2])
+    print("Trump card:      " + str(topCard))
     bid = input("How many strikes will you win out of {}?\n".format(rounds))
-
-
-
-
-
 
 
 def add_players(num):
@@ -45,6 +52,7 @@ def add_players(num):
         activePlayers.append(opponent3Hand)
     elif num == 2: pass
     else: print("Invalid number of players, continuing with 2...")
+
 
 def print_cards(value):
     if value == 1:
@@ -57,6 +65,7 @@ def print_cards(value):
                 opponent_number += 1
     else: print("Your hand:       " + str(playerHand)[1:-1].replace("'",""))
 
+
 def dealcards(player, deck):
     if len(deck) != 1:
         selected_card = random.randrange(0, len(deck) - 1)
@@ -65,6 +74,7 @@ def dealcards(player, deck):
     else:
         player.append(deck[0])
         deck.pop(0)
+
 
 def deal(num_rounds, players):
     while num_rounds != 0:
@@ -82,9 +92,6 @@ def generate_deck(deck):
                 deck.append("[" + y + " of " + x + "]") #fixes spacing due to number ten having two digits
             else:
                 deck.append("[" + y + "of " + x + "]")
-
-
-
 
 
 main()
