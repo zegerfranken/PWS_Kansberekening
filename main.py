@@ -28,12 +28,13 @@ def computer_turn_dumb():
     return
 
 
-def computer_bet_dumb(rounds,hand,trump):
+def computer_bet_dumb(rounds,hand,trumpsuit):
     bet = math.floor(rounds/len(activePlayers)) # estimation of average chance of winning
     highCards = []
     for i in hand:
         if (i.find("J") or i.find("Q") or i.find("K") or i.find("A") != -1) and bet < math.ceil(rounds/2):
             highCards.append(i)
+    avrgOppHighcards = (4/13)*rounds
     bet += len(highCards)-1
     return bet
 
@@ -43,7 +44,7 @@ def round_start(rounds):
     dealcards(topCard, cardPool)
     print("Trump card:      " + str(topCard))
     bid = input("How many strikes will you win out of {}?\n".format(rounds))
-    computer_bet_dumb(rounds,opponent1Hand,)
+    computer_bet_dumb(rounds,opponent1Hand,find_suit(topCard))
 
 def add_players(num):
     if num == 3: activePlayers.append(opponent2Hand)
@@ -55,12 +56,12 @@ def add_players(num):
 
 
 def find_suit(card):
-    trump = ""
-    if card.find("♡") != -1: trump = "hearts"
-    elif card.find("♤") != -1: trump = "spades"
-    elif card.find("♢") != -1: trump = "diamonds"
-    elif card.find("♧") != -1: trump = "clubs"
-    return trump
+    suit = ""
+    if card.find("♡") != -1: suit = "hearts"
+    elif card.find("♤") != -1: suit = "spades"
+    elif card.find("♢") != -1: suit = "diamonds"
+    elif card.find("♧") != -1: suit = "clubs"
+    return suit
 
 def print_cards(value):
     if value == 1:
