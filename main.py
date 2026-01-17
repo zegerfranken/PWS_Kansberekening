@@ -1,4 +1,4 @@
-
+import math
 import random
 import re
 
@@ -31,21 +31,21 @@ def computer_turn_dumb():
 
 def computer_bet_dumb(hand,trump_suit):
     bet = 0
-    estimate = {}
+    estimate = []
     level_list = []
     p = 2
     while len(level_list) < 13:
         level_list.append(p)
         p += 1
-
+      
     for i in hand: #rates the chance per card on being able to win a strike
-    estimate.
-        for p in level_list:
-            if
-        if find_suit(i) == trump_suit:
-
-        else:
-            return
+      below = (find_level(i) - 2)
+      above = 0
+      if find_suit(i) == trump_suit: # cards in a suit - cards under card level - card itself + 14 trump cards
+        above = 14 - below - 1 
+      else:
+        above = 14 - below - 1 + 14
+      
 
 
     return bet
