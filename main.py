@@ -16,7 +16,7 @@ def main():
     deal(rounds,activePlayers)
     print_cards(0)
     round_start(rounds)
-    computer_bet_dumb_confident(rounds,opponent1Hand)
+
 
 #end of main
 
@@ -28,13 +28,13 @@ def computer_turn_dumb():
     return
 
 
-def computer_bet_dumb_confident(rounds,hand,trump):
-    bet = math.floor(rounds/len(activePlayers))
+def computer_bet_dumb(rounds,hand,trump):
+    bet = math.floor(rounds/len(activePlayers)) # estimation of average chance of winning
     highCards = []
     for i in hand:
-        if (i.find("J") or i.find("Q") or i.find("K") or i.find("A") != -1) and bet < rounds/2:
+        if (i.find("J") or i.find("Q") or i.find("K") or i.find("A") != -1) and bet < math.ceil(rounds/2):
             highCards.append(i)
-    bet += math.ceil(len(highCards)/2)
+    bet += len(highCards)-1
     return bet
 
 
@@ -43,7 +43,7 @@ def round_start(rounds):
     dealcards(topCard, cardPool)
     print("Trump card:      " + str(topCard))
     bid = input("How many strikes will you win out of {}?\n".format(rounds))
-
+    computer_bet_dumb(rounds,opponent1Hand,)
 
 def add_players(num):
     if num == 3: activePlayers.append(opponent2Hand)
@@ -53,6 +53,14 @@ def add_players(num):
     elif num == 2: pass
     else: print("Invalid number of players, continuing with 2...")
 
+
+def find_suit(card):
+    trump = ""
+    if card.find("♡") != -1: trump = "hearts"
+    elif card.find("♤") != -1: trump = "spades"
+    elif card.find("♢") != -1: trump = "diamonds"
+    elif card.find("♧") != -1: trump = "clubs"
+    return trump
 
 def print_cards(value):
     if value == 1:
