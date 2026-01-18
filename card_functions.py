@@ -10,13 +10,11 @@ def find_suit(card):
     elif card.find("♧") != -1: suit = "clubs"
     return suit
 
-
 def find_level(card):
     level = re.sub(r"\D", "", card)    #regex from stack overflow
     if level == "":
         level = card[1].replace("J","11").replace("Q","12").replace("K","13").replace("A","14")
     return int(level)
-
 
 def print_cards(value):
     if value == 1:
@@ -28,7 +26,6 @@ def print_cards(value):
                 print("Opponent " + str(opponent_number) + " hand: " + str(i)[1:-1].replace("'",""))
                 opponent_number += 1
     else: print("Your hand:       " + str(gv.player1)[1:-1].replace("'", ""))
-
 
 def dealcards(player):
     if isinstance(player, list):
@@ -50,14 +47,12 @@ def dealcards(player):
             gv.cardPool.pop(0)
     return 0
 
-
 def deal():
     num_rounds = gv.rounds
     while num_rounds != 0:
         for i in gv.players:
             dealcards(gv.players[gv.players.index(i)])
         num_rounds -= 1
-
 
 def generate_deck():
     card_suits = ["♤", "♡", "♢", "♧"]

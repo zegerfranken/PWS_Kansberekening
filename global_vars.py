@@ -7,9 +7,11 @@ players = []
 playerNames = ["Player 1", "Player 2", "Player 3", "Player 4"]
 cardPool = []
 topCard = ""
-turnCount = 0
+turnCount = 1
 rounds = 0
+bid = 0
 estimate = []
+centerPile = ""
 
 def dump_vars():
     return
