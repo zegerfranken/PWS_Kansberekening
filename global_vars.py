@@ -12,4 +12,4 @@ rounds = 0
 estimate = []
 
 def dump_vars():
-    print()
+    return
