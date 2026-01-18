@@ -1,5 +1,6 @@
 from card_functions import generate_deck, deal, print_cards
 from game_functions import add_players, round_start
+from graph import graph
 
 playerHand = []
 opponent1Hand = []
@@ -10,7 +11,7 @@ cardPool = []
 turnCount = 0 #turn counter. 0 = player, 1 = opponent1 etc
 
 def main():
-
+    graph()
     mode = int(input("Display all cards?\n  0: no\n  1: yes\n"))
     generate_deck(cardPool)
     rounds = int(input("Rounds? "))
@@ -18,5 +19,6 @@ def main():
     deal(rounds,activePlayers,cardPool)
     print_cards(mode,activePlayers,playerHand)
     round_start(rounds,cardPool,activePlayers)
+
 
 main()
