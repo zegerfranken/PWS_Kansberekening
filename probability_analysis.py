@@ -23,5 +23,4 @@ def computer_bet(hand):
     win_percent = []
     for i in estimate:
         win_percent.append(str(round((1.00 - i)*100,1))+"%")
-    estimate = [estimate,win_percent]
-    return estimate
+    gv.estimate = [estimate,win_percent]
