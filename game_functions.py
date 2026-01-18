@@ -10,13 +10,13 @@ def round_start():
     dealcards(gv.topCard)
     print("Trump card:      " + str(gv.topCard))
     bid = input("\nHow many strikes will you win out of {}? ".format(gv.rounds))
-    for i in gv.activePlayers:
-        print(computer_bet(gv.activePlayers[gv.activePlayers.index(i)]))
+    for i in gv.players:
+        print(computer_bet(gv.players[gv.players.index(i)]))
 
 def set_players(num):
-    gv.activePlayers = [gv.playerHand]
+    gv.players = [gv.player1]
     p = 0
     while num != 1:
-        gv.activePlayers.append(gv.opponents[p])
+        gv.players.append(gv.opponents[p])
         p += 1
         num -= 1

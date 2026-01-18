@@ -21,13 +21,13 @@ def find_level(card):
 def print_cards(value):
     if value == 1:
         opponent_number = 1
-        for i in gv.activePlayers:
-            if gv.activePlayers.index(i) == 0:
+        for i in gv.players:
+            if gv.players.index(i) == 0:
                 print("\nYour hand:       " + str(i)[1:-1].replace("'",""))
             else:
                 print("Opponent " + str(opponent_number) + " hand: " + str(i)[1:-1].replace("'",""))
                 opponent_number += 1
-    else: print("Your hand:       " + str(gv.playerHand)[1:-1].replace("'",""))
+    else: print("Your hand:       " + str(gv.player1)[1:-1].replace("'", ""))
 
 
 def dealcards(player):
@@ -54,8 +54,8 @@ def dealcards(player):
 def deal():
     num_rounds = gv.rounds
     while num_rounds != 0:
-        for i in gv.activePlayers:
-            dealcards(gv.activePlayers[gv.activePlayers.index(i)])
+        for i in gv.players:
+            dealcards(gv.players[gv.players.index(i)])
         num_rounds -= 1
 
 

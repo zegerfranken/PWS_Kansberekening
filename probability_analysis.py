@@ -19,7 +19,7 @@ def computer_bet(hand):
             for q in hand:
                 if find_suit(q) == find_suit(gv.topCard): trumpCardsInHand += 1
             above = 13 - below - aboveInHand + 12 - trumpCardsInHand
-        estimate.append(round(float(((above/52)*len(hand))*(len(gv.activePlayers)-1)),2)) #average number of cards in the opponents' hand that can beat that card
+        estimate.append(round(float(((above/52)*len(hand)) * (len(gv.players) - 1)), 2)) #average number of cards in the opponents' hand that can beat that card
     win_percent = []
     for i in estimate:
         win_percent.append(str(round((1.00 - i)*100,1))+"%")
