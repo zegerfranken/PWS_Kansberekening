@@ -1,5 +1,6 @@
 import re
 import random
+import global_vars as gv
 
 def find_suit(card):
     suit = ""
@@ -17,53 +18,50 @@ def find_level(card):
     return int(level)
 
 
-def print_cards(value,active_players,player_hand):
+def print_cards(value):
     if value == 1:
         opponent_number = 1
-        for i in active_players:
-            if active_players.index(i) == 0:
+        for i in gv.activePlayers:
+            if gv.activePlayers.index(i) == 0:
                 print("\nYour hand:       " + str(i)[1:-1].replace("'",""))
             else:
                 print("Opponent " + str(opponent_number) + " hand: " + str(i)[1:-1].replace("'",""))
                 opponent_number += 1
-    else: print("Your hand:       " + str(player_hand)[1:-1].replace("'",""))
+    else: print("Your hand:       " + str(gv.playerHand)[1:-1].replace("'",""))
 
 
-def dealcards(player, deck):
+def dealcards(player):
     if isinstance(player, list):
-        if len(deck) != 1:
-            selected_card = random.randrange(0, len(deck) - 1)
-            player.append(deck[selected_card])
-            deck.pop(selected_card)
-            return 0
+        if len(gv.cardPool) != 1:
+            selected_card = random.randrange(0, len(gv.cardPool) - 1)
+            player.append(gv.cardPool[selected_card])
+            gv.cardPool.pop(selected_card)
         else:
-            player.append(deck[0])
-            deck.pop(0)
-            return 0
+            player.append(gv.cardPool[0])
+            gv.cardPool.pop(0)
     elif isinstance(player, str):
-        if len(deck) != 1:
-            selected_card = random.randrange(0, len(deck) - 1)
-            player = deck[selected_card]
-            deck.pop(selected_card)
-            return player
+        if len(gv.cardPool) != 1:
+            selected_card = random.randrange(0, len(gv.cardPool) - 1)
+            player = gv.cardPool[selected_card]
+            gv.cardPool.pop(selected_card)
         else:
-            player = deck[0]
-            deck.pop(0)
-            return player
+            player = gv.cardPool[0]
+            gv.cardPool.pop(0)
     return 0
 
 
-def deal(num_rounds, players,card_pool):
+def deal():
+    num_rounds = gv.rounds
     while num_rounds != 0:
-        for i in players:
-            dealcards(players[players.index(i)], card_pool)
+        for i in gv.activePlayers:
+            dealcards(gv.activePlayers[gv.activePlayers.index(i)])
         num_rounds -= 1
 
 
-def generate_deck(deck):
+def generate_deck():
     card_suits = ["♤", "♡", "♢", "♧"]
     card_level = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
     for x in card_suits:
         for y in card_level:
-            if y != "10": deck.append("[" + y + " of " + x + "]") #fixes spacing due to number ten having two digits
-            else: deck.append("[" + y + "of " + x + "]")
+            if y != "10": gv.cardPool.append("[" + y + " of " + x + "]") #fixes spacing due to number ten having two digits
+            else: gv.cardPool.append("[" + y + "of " + x + "]")
