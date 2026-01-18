@@ -1,4 +1,4 @@
-from computer_bet import computer_bet
+from probability_analysis import computer_bet
 from card_functions import *
 
 def turn(actor):
