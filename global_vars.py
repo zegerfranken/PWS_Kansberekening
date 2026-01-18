@@ -1,4 +1,4 @@
-player1 = [] #switch to begin player and follower for insight
+player1 = []
 player2 = []
 player3 = []
 player4 = []
