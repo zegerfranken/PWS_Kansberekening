@@ -1,5 +1,6 @@
-from card_functions import *
+from card_functions import generate_deck, deal, dealcards, print_cards, find_suit
 from computer_bet import computer_bet
+
 
 playerHand = []
 opponent1Hand = []
@@ -13,8 +14,8 @@ def main():
     generate_deck(cardPool)
     rounds = int(input("Rounds? "))
     add_players(int(input("Players? ")))
-    deal(rounds,activePlayers)
-    print_cards(0)
+    deal(rounds,activePlayers,cardPool)
+    print_cards(0,activePlayers,playerHand)
     round_start(rounds)
 
 

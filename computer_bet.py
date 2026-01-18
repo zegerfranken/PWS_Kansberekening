@@ -1,5 +1,4 @@
-from card_functions import find_level
-from card_functions import find_suit
+from card_functions import find_suit, find_level
 
 def computer_bet(hand, trump_suit):
     bet = 0

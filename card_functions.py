@@ -1,7 +1,5 @@
 import re
 import random
-import main_script as m
-
 
 def find_suit(card):
     suit = ""
@@ -19,16 +17,16 @@ def find_level(card):
     return int(level)
 
 
-def print_cards(value):
+def print_cards(value,active_players,player_hand):
     if value == 1:
         opponent_number = 1
-        for i in m.activePlayers:
-            if m.activePlayers.index(i) == 0:
+        for i in active_players:
+            if active_players.index(i) == 0:
                 print("Your hand:       " + str(i)[1:-1].replace("'",""))
             else:
                 print("Opponent " + str(opponent_number) + " hand: " + str(i)[1:-1].replace("'",""))
                 opponent_number += 1
-    else: print("Your hand:       " + str(m.playerHand)[1:-1].replace("'",""))
+    else: print("Your hand:       " + str(player_hand)[1:-1].replace("'",""))
 
 
 def dealcards(player, deck):
@@ -54,10 +52,10 @@ def dealcards(player, deck):
             return player
     return 0
 
-def deal(num_rounds, players):
+def deal(num_rounds, players,cardPool):
     while num_rounds != 0:
         for i in players:
-            dealcards(players[players.index(i)], m.cardPool)
+            dealcards(players[players.index(i)], cardPool)
         num_rounds -= 1
 
 
