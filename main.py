@@ -1,6 +1,5 @@
-from card_functions import generate_deck, deal, dealcards, print_cards, find_suit
-from computer_bet import computer_bet
-
+from card_functions import generate_deck, deal, print_cards
+from game_functions import add_players, round_start
 
 playerHand = []
 opponent1Hand = []
@@ -11,39 +10,12 @@ cardPool = []
 turnCount = 0 #turn counter. 0 = player, 1 = opponent1 etc
 
 def main():
+
     generate_deck(cardPool)
     rounds = int(input("Rounds? "))
-    add_players(int(input("Players? ")))
+    add_players(int(input("Players? ")),activePlayers,opponent2Hand,opponent3Hand)
     deal(rounds,activePlayers,cardPool)
     print_cards(0,activePlayers,playerHand)
-    round_start(rounds)
-
-
-#end of main
-
-def turn(actor):
-    return
-
-
-def computer_turn_dumb():
-    return
-
-
-
-
-def round_start(rounds):
-    topCard = ""
-    topCard = dealcards(topCard, cardPool)
-    print("Trump card:      " + str(topCard))
-    bid = input("How many strikes will you win out of {}?\n".format(rounds))
-    computer_bet(opponent1Hand,find_suit(topCard))
-
-def add_players(num):
-    if num == 3: activePlayers.append(opponent2Hand)
-    elif num == 4:
-        activePlayers.append(opponent2Hand)
-        activePlayers.append(opponent3Hand)
-    elif num == 2: pass
-    else: print("Invalid number of players, continuing with 2...")
+    round_start(rounds,cardPool,activePlayers)
 
 main()

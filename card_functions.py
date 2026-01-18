@@ -52,10 +52,11 @@ def dealcards(player, deck):
             return player
     return 0
 
-def deal(num_rounds, players,cardPool):
+
+def deal(num_rounds, players,card_pool):
     while num_rounds != 0:
         for i in players:
-            dealcards(players[players.index(i)], cardPool)
+            dealcards(players[players.index(i)], card_pool)
         num_rounds -= 1
 
 

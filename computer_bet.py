@@ -12,8 +12,8 @@ def computer_bet(hand, trump_suit):
     for i in hand:  # rates the chance per card on being able to win a strike
         aboveInHand = 0
         for p in hand:
-            if (find_suit(i) == find_suit(p)) and (find_level(i) <= find_level(
-                p)): aboveInHand += 1  # finds cards that beat your card, which are already in your hand. includes the card itself
+            if (find_suit(i) == find_suit(p)) and (find_level(i) <= find_level(p)):
+                aboveInHand += 1  # finds cards that beat your card, which are already in your hand. includes the card itself
         print(aboveInHand)
         below = (find_level(i) - 2)
         above = 0
@@ -22,4 +22,4 @@ def computer_bet(hand, trump_suit):
             above = 14 - below - aboveInHand
         else:
             above = 14 - below + 14
-    return bet
+    return "yes"
