@@ -9,9 +9,9 @@ def round_start(rounds,card_pool,active_players):
     topCard = ""
     topCard = dealcards(topCard, card_pool)
     print("Trump card:      " + str(topCard))
-    bid = input("\nHow many strikes will you win out of {}?".format(rounds))
+    bid = input("\nHow many strikes will you win out of {}? ".format(rounds))
     for i in active_players:
-        print(computer_bet(active_players[active_players.index(i)],topCard))
+        print(computer_bet(active_players[active_players.index(i)],topCard,active_players))
 
 def add_players(num,active_players,opponent2_hand,opponent3_hand):
     if num == 3: active_players.append(opponent2_hand)
