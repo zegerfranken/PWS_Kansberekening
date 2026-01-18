@@ -1,5 +1,5 @@
 from card_functions import generate_deck, deal, print_cards
-from game_functions import set_players, round_start
+from game_function import set_players, round_start
 from graph import graph
 import global_vars as gv
 
