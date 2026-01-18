@@ -1,4 +1,4 @@
-playerHand = []
+playerHand = [] #switch to begin player and follower for insight
 opponent1Hand = []
 opponent2Hand = []
 opponent3Hand = []
