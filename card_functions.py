@@ -22,7 +22,7 @@ def print_cards(value,active_players,player_hand):
         opponent_number = 1
         for i in active_players:
             if active_players.index(i) == 0:
-                print("Your hand:       " + str(i)[1:-1].replace("'",""))
+                print("\nYour hand:       " + str(i)[1:-1].replace("'",""))
             else:
                 print("Opponent " + str(opponent_number) + " hand: " + str(i)[1:-1].replace("'",""))
                 opponent_number += 1
