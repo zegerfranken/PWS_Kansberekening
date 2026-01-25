@@ -1,5 +1,6 @@
 import global_vars as gv
 from card_functions import find_suit, find_level
+import math
 
 def computer_bet(hand):
     bet = 0
@@ -19,7 +20,10 @@ def computer_bet(hand):
             for q in hand:
                 if find_suit(q) == find_suit(gv.topCard): trumpCardsInHand += 1
             above = 13 - below - aboveInHand + 12 - trumpCardsInHand
-        estimate.append(round(float(((above/52)*len(hand)) * (len(gv.players) - 1)), 2)) #average number of cards in the opponents' hand that can beat that card
+        n = 52 - gv.rounds - 1
+        k = gv.rounds
+        p = (above*(52-gv.rounds-2))/math.comb(n,k)
+        estimate.append(p)
     win_percent = []
     for i in estimate:
         win_percent.append(str(round((1.00 - i)*100,1))+"%")

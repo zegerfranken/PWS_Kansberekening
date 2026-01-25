@@ -12,11 +12,10 @@ def turn():
 def round_start():
     dealcards(gv.topCard)
     print("Trump card:      " + str(gv.topCard))
-    turn()
     for i in gv.players:
         computer_bet(gv.players[gv.players.index(i)])
         print(gv.playerNames[gv.players.index(i)]+":")
-        print("  avg # of cards < these cards:   " + str(gv.estimate[0]) + "\n  win % chance:                   " + str(gv.estimate[1]))
+        print("  chance of facing a higher card: " + str(gv.estimate[0]) + "\n  win % chance:                   " + str(gv.estimate[1]))
 
     gv.bid = input("\nHow many strikes will you win out of {}? ".format(gv.rounds))
 
