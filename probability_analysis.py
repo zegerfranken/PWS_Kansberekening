@@ -16,7 +16,7 @@ def computer_bet(hand):
             above = 13 - below - aboveInHand
             if find_level(i) < find_level(gv.topCard): above -= 1
         else:
-            trumpCardsInHand = 0
+            trumpCardsInHand = 0 #
             for q in hand:
                 if find_suit(q) == find_suit(gv.topCard): trumpCardsInHand += 1
             above = 13 - below - aboveInHand + 12 - trumpCardsInHand
