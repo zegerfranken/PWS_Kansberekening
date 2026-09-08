@@ -1,4 +1,4 @@
-from probability_analysis import computer_bet
+from probability_analysis import eval_hand
 from card_functions import *
 import global_vars as gv
 
@@ -13,9 +13,10 @@ def round_start():
     dealcard(gv.topCard)
     print("Trump card:      " + str(gv.topCard))
     for i in gv.players:
-        computer_bet(gv.players[gv.players.index(i)])
-        print(gv.playerNames[gv.players.index(i)]+":")
-        print("  chance of facing a superior card: " + str(gv.estimate[0]) + "\n  win % chance:                   " + str(gv.estimate[1]))
+        player = gv.players.index(i)
+        eval_hand(player)
+        print(gv.playerNames[player]+":")
+        print(gv.player_evals[player])
 
     gv.bid = input("\nHow many tricks will you win out of {}? ".format(gv.rounds))
 

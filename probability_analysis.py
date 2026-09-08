@@ -8,10 +8,10 @@ from global_vars import player1_eval
 def hypergeometric(N,K,n,k):
     return (math.comb(K,k))*(math.comb((N-K),(n-k)))/(math.comb(N,n))
 
-def eval_hand(hand):
-    for i in hand:  # rates the chance per card on being able to win a strike
+def eval_hand(player):
+    for i in gv.players[player]:  # rates the chance per card on being able to win a strike
         aboveInHand = 0
-        for p in hand:
+        for p in gv.players[player]:
             if (find_suit(i) == find_suit(p)) and (find_level(i) <= find_level(p)):
                 aboveInHand += 1  # finds cards that beat your card, which are already in your hand. includes the card itself
         below = (find_level(i) - 2)
@@ -20,9 +20,9 @@ def eval_hand(hand):
             if find_level(i) < find_level(gv.topCard): above -= 1
         else:
             trumpCardsInHand = 0 #
-            for q in hand:
+            for q in gv.players[player]:
                 if find_suit(q) == find_suit(gv.topCard): trumpCardsInHand += 1
             above = 13 - below - aboveInHand + 12 - trumpCardsInHand
         N = 52 - gv.rounds - 1 #unseen cards in game
-        player1_eval.append(above)
+        gv.player_evals[player].append(above)
 
