@@ -27,7 +27,7 @@ def print_cards(value):
                 opponent_number += 1
     else: print("Your hand:       " + str(gv.player1)[1:-1].replace("'", ""))
 
-def dealcards(player):
+def dealcard(player):
     if isinstance(player, list):
         if len(gv.cardPool) != 1:
             selected_card = random.randrange(0, len(gv.cardPool) - 1)
@@ -51,7 +51,7 @@ def deal():
     num_rounds = gv.rounds
     while num_rounds != 0:
         for i in gv.players:
-            dealcards(gv.players[gv.players.index(i)])
+            dealcard(gv.players[gv.players.index(i)])
         num_rounds -= 1
 
 def generate_deck():

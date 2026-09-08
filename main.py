@@ -1,6 +1,5 @@
 from card_functions import generate_deck, deal, print_cards
 from game_function import set_players, round_start
-from graph import graph
 import global_vars as gv
 
 def main():
@@ -11,7 +10,6 @@ def main():
     deal()
     print_cards(mode)
     round_start()
-    graph()
 
 main()
 

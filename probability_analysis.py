@@ -2,10 +2,13 @@ import global_vars as gv
 from card_functions import find_suit, find_level
 import math
 
-def computer_bet(hand):
-    bet = 0
-    estimate = []
+from global_vars import player1_eval
 
+
+def hypergeometric(N,K,n,k):
+    return (math.comb(K,k))*(math.comb((N-K),(n-k)))/(math.comb(N,n))
+
+def eval_hand(hand):
     for i in hand:  # rates the chance per card on being able to win a strike
         aboveInHand = 0
         for p in hand:
@@ -20,11 +23,6 @@ def computer_bet(hand):
             for q in hand:
                 if find_suit(q) == find_suit(gv.topCard): trumpCardsInHand += 1
             above = 13 - below - aboveInHand + 12 - trumpCardsInHand
-        n = 52 - gv.rounds - 1
-        k = gv.rounds
-        p = (above*(52-gv.rounds-2))/math.comb(n,k)
-        estimate.append(p)
-    win_percent = []
-    for i in estimate:
-        win_percent.append(str(round((1.00 - i)*100,1))+"%")
-    gv.estimate = [estimate,win_percent]
+        N = 52 - gv.rounds - 1 #unseen cards in game
+        player1_eval.append(above)
+

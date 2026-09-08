@@ -1,7 +1,11 @@
 player1 = []
+player1_eval = []
 player2 = []
+player2_eval = []
 player3 = []
+player3_eval = []
 player4 = []
+player4_eval = []
 opponents = [player2, player3, player4]
 players = []
 playerNames = ["Player 1", "Player 2", "Player 3", "Player 4"]
@@ -10,7 +14,6 @@ topCard = ""
 turnCount = 1
 rounds = 0
 bid = 0
-estimate = []
 centerPile = ""
 
 def dump_vars():
