@@ -40,10 +40,10 @@ def dealcard(player):
         if len(gv.cardPool) != 1:
             selected_card = random.randrange(0, len(gv.cardPool) - 1)
             player = gv.cardPool[selected_card]
-            gv.topCard = player
+            gv.trumpCard = player
             gv.cardPool.pop(selected_card)
         else:
-            gv.topCard = gv.cardPool[0]
+            gv.trumpCard = gv.cardPool[0]
             gv.cardPool.pop(0)
     return 0
 

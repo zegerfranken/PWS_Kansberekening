@@ -10,8 +10,8 @@ def turn():
     gv.turnCount += 1
 
 def round_start():
-    dealcard(gv.topCard)
-    print("Trump card:      " + str(gv.topCard))
+    dealcard(gv.trumpCard)
+    print("Trump card:      " + str(gv.trumpCard))
     for i in gv.players:
         player = gv.players.index(i)
         eval_hand(player)
