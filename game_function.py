@@ -20,6 +20,7 @@ def round_start():
 
     gv.bid = input("\nHow many tricks will you win out of {}? ".format(gv.rounds))
 
+
 def set_players(num):
     gv.players = [gv.player1]
     p = 0

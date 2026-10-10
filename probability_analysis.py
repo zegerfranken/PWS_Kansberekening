@@ -34,3 +34,4 @@ def eval_hand(player):
         chance = (str(int(round((1-summed_probability_superior_cards), 2)*100))+"% ") #turns 0.6 (chance of losing) into 40% (chance of winning)
         weighted_average_superior_cards = n*(K/N)
         chance += str(round(weighted_average_superior_cards, 2))
+        gv.player_evals[player].append(chance)
