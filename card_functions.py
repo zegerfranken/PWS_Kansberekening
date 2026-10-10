@@ -28,7 +28,7 @@ def print_cards(value):
     else: print("Your hand:       " + str(gv.player1)[1:-1].replace("'", ""))
 
 def dealcard(player):
-    if isinstance(player, list):
+    if isinstance(player, list): #for adding cards to a player hand
         if len(gv.cardPool) != 1:
             selected_card = random.randrange(0, len(gv.cardPool) - 1)
             player.append(gv.cardPool[selected_card])
@@ -36,7 +36,7 @@ def dealcard(player):
         else:
             player.append(gv.cardPool[0])
             gv.cardPool.pop(0)
-    elif isinstance(player, str):
+    elif isinstance(player, str): # for dealing trump card
         if len(gv.cardPool) != 1:
             selected_card = random.randrange(0, len(gv.cardPool) - 1)
             player = gv.cardPool[selected_card]

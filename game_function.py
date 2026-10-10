@@ -7,6 +7,9 @@ def turn():
         print("Choose a card (1-{}):\n\n  ".format(len(gv.player1)) + str(gv.player1) +"\n")
         gv.centerPile = gv.player1[int(input())-1]
         gv.player1.remove(gv.centerPile)
+    else:
+        return
+
     gv.turnCount += 1
 
 def round_start():
@@ -18,7 +21,9 @@ def round_start():
         print(gv.playerNames[player]+":")
         print(gv.player_evals[player])
 
-    gv.bid = input("\nHow many tricks will you win out of {}? ".format(gv.rounds))
+    gv.player1_bid = input("\nHow many tricks will you win out of {}? ".format(gv.rounds))
+    print("Player "+ str(gv.starting_player+1) +" starts the round:")
+    turn()
 
 
 def set_players(num):
