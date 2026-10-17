@@ -7,15 +7,16 @@ def crossout(text): #from stack overflow
 
 
 def turn(playerNum):
-    if gv.centerPile == "":
+    if not gv.centerPile[0]:
         print(gv.playerNames[playerNum])
         print("Choose a card (1-{}):\n\n  ".format(len(gv.players[playerNum])) + str(gv.players[playerNum]) +"\n")
-        gv.centerPile = gv.players[playerNum][int(input())-1]
-        gv.players[playerNum].remove(gv.centerPile)
+        gv.centerPile.append(gv.players[playerNum][int(input())-1])
+        gv.players[playerNum].remove(gv.centerPile[0])
     else:
-        requiredSuit = find_suit(gv.centerPile)
+        print("Cards on Pile: " + gv.centerPile + "\n")
+        requiredSuit = find_suit(gv.centerPile[0])
         for i in gv.players[playerNum]:
-            if find_suit(i) == requiredSuit: print(crossout(i))
+            if find_suit(i) != requiredSuit: print(crossout(i))
             else: print(i)
 
 def round_start():
@@ -28,7 +29,7 @@ def round_start():
         print(gv.player_evals[player])
 
     gv.player1_bid = input("\nHow many tricks will you win out of {}? ".format(gv.rounds))
-    gv.starting_player = int(input("\nWho starts the Round?") - 1)
+    gv.starting_player = int(input("\nWho starts the Round? ")) - 1
     print("Player "+ str(gv.starting_player+1) +" starts the round:")
 
     while gv.turnCount != len(gv.players):

@@ -19,7 +19,7 @@ cardPool = []
 trumpCard = ""
 turnCount = 1
 rounds = 0
-centerPile = "" #where players deal cards
+centerPile = [] #where players play cards
 starting_player = 0
 
 def dump_vars():
