@@ -1,6 +1,7 @@
 import global_vars as gv
 from card_functions import find_suit, find_level
 import math
+import random
 
 from global_vars import player1_eval
 
@@ -35,3 +36,27 @@ def eval_hand(player):
         weighted_average_superior_cards = n*(K/N)
         chance += str(round(weighted_average_superior_cards, 2))
         gv.player_evals[player].append(chance)
+
+currentSuit = find_suit(gv.centerPile)
+
+def highplay(player):
+    
+    handLevels = []
+    for i in player:
+        if find_suit(i) == currentSuit: handLevels.append(find_level(i))
+        else: handLevels.append(0) 
+    return player.index(max(handLevels))
+
+
+
+def smallplay(player):
+    handLevels = []
+    for i in player:
+        handLevels.append(find_level(i))
+    return player.index(min(handLevels))
+
+
+
+def randomplay(player): 
+    
+    return random.randrange(0, (len(player)-1))

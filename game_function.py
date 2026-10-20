@@ -39,7 +39,10 @@ def round_start():
         local_count += 1
         if (gv.starting_player + local_count) == len(gv.players - 1):
             gv.starting_player = 0
-            local_count = 0
+            local_count = 0 
+
+    if gv.turnCount == len(gv.players):
+        
 
 
 
