@@ -37,13 +37,12 @@ def eval_hand(player):
         chance += str(round(weighted_average_superior_cards, 2))
         gv.player_evals[player].append(chance)
 
-currentSuit = find_suit(gv.centerPile[-1])
 
 def high_play(player):
     handLevels = []
     for i in player:
-        if (find_suit(i) == find_suit(gv.trumpCard)) and (find_suit(i) != currentSuit): handLevels.append(find_level(i)+14)
-        elif find_suit(i) == currentSuit: handLevels.append(find_level(i))
+        if (find_suit(i) == find_suit(gv.trumpCard)) and (find_suit(i) != find_suit(gv.centerPile[-1])): handLevels.append(find_level(i)+14)
+        elif find_suit(i) == find_suit(gv.centerPile[-1]): handLevels.append(find_level(i))
         else: handLevels.append(0) 
     return player.index(max(handLevels))
 
