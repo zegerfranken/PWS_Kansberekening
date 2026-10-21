@@ -21,6 +21,6 @@ turnCount = 1
 rounds = 0
 centerPile = [] #where players play cards
 starting_player = 0
-
+debug = False
 def dump_vars():
     return

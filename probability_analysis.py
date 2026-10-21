@@ -31,6 +31,12 @@ def eval_hand(player):
         n = (len(gv.players) - 1) * gv.rounds
         k_upper_bound = n + 1  #added +1 due to pythons range not including the top value. for k in range 1 - 5, printing k returns 1 2 3 4, excluding 5. this bound checks for every single chance, up to the chance of each card an opponent drew being superior
         summed_probability_superior_cards = 0.0
+        if gv.debug:
+            print(gv.playerNames[player])
+            print("N="+str(N))
+            print("K="+str(K))
+            print("n="+str(n))
+            print("kupper="+str(k_upper_bound)+"\n")
         for k in range(1, k_upper_bound): summed_probability_superior_cards += hypergeometric(N, K, n, k)  #equivalent to summation in mathematics
         chance = (str(int(round((1-summed_probability_superior_cards), 2)*100))+"% ") #turns 0.6 (chance of losing) into 40% (chance of winning)
         weighted_average_superior_cards = n*(K/N)

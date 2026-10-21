@@ -5,6 +5,7 @@ from probability_analysis import hypergeometric
 
 
 def main():
+    if int(input("Enable debug? ")) == 1: gv.debug = True
     mode = int(input("Display all cards?\n  0: no\n  1: yes\n"))
     generate_deck()
     gv.rounds = int(input("Rounds? "))
