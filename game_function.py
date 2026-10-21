@@ -16,8 +16,12 @@ def turn(playerNum):
         print("Cards on Pile: " + gv.centerPile + "\n")
         requiredSuit = find_suit(gv.centerPile[0])
         for i in gv.players[playerNum]:
-            if find_suit(i) != requiredSuit: print(crossout(i))
+            if find_suit(i) != requiredSuit or find_suit(gv.trumpCard): print(crossout(i))
             else: print(i)
+        choice = int(input("Select a valid card: ") - 1)
+        while find_suit(gv.players[playerNum][choice]) != requiredSuit or find_suit(gv.trumpCard):
+            choice = input("Invalid choice. Select a valid card.")
+
 
 def round_start():
     dealcard(gv.trumpCard)
@@ -34,7 +38,7 @@ def round_start():
 
     while gv.turnCount != len(gv.players):
         local_count = 0
-        turn((gv.starting_player + local_count))
+        turn(gv.starting_player + local_count)
         gv.turnCount += 1
         local_count += 1
         if (gv.starting_player + local_count) == len(gv.players - 1):
@@ -42,7 +46,7 @@ def round_start():
             local_count = 0 
 
     if gv.turnCount == len(gv.players):
-        
+        pass
 
 
 

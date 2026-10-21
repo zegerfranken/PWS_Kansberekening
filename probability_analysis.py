@@ -39,18 +39,17 @@ def eval_hand(player):
 
 currentSuit = find_suit(gv.centerPile[-1])
 
-def highplay(player):
+def high_play(player):
     handLevels = []
     for i in player:
-        if (find_suit(i) == find_suit(gv.trumpCard)) and (find_suit(i) != currentSuit):
-            
+        if (find_suit(i) == find_suit(gv.trumpCard)) and (find_suit(i) != currentSuit): handLevels.append(find_level(i)+14)
         elif find_suit(i) == currentSuit: handLevels.append(find_level(i))
         else: handLevels.append(0) 
     return player.index(max(handLevels))
 
 
 
-def smallplay(player):
+def small_play(player):
     handLevels = []
     for i in player:
         handLevels.append(find_level(i))
@@ -58,6 +57,6 @@ def smallplay(player):
 
 
 
-def randomplay(player): 
+def random_play(player):
     
     return random.randrange(0, (len(player)-1))
